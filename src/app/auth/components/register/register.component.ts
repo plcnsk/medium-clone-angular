@@ -6,6 +6,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import { registerAction } from '../../store/actions/register.action';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +20,10 @@ import {
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -29,10 +35,9 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-    console.log(this.form.valid);
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
+    this.store.dispatch(registerAction(this.form.value));
   }
 }
