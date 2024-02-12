@@ -7,6 +7,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { routes } from './app.routes';
 import { authReducer } from './auth/store/reducers';
 import { AuthService } from './auth/services/auth.service';
+import { provideEffects } from '@ngrx/effects';
+import { RegisterEffect } from './auth/store/effects/register.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideHttpClient(),
     provideState({ name: 'auth', reducer: authReducer }),
+    provideEffects([RegisterEffect]),
     provideStoreDevtools({ maxAge: 50, logOnly: !isDevMode() }),
     AuthService,
   ],
