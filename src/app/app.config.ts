@@ -10,6 +10,7 @@ import { authReducer } from './auth/store/reducers';
 import { AuthService } from './auth/services/auth.service';
 import { RegisterEffect } from './auth/store/effects/register.effect';
 import { PersistenceService } from './shared/services/persistence.service';
+import { LoginEffect } from './auth/store/effects/login.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,8 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideHttpClient(),
     provideState({ name: 'auth', reducer: authReducer }),
-    provideEffects([RegisterEffect]),
     provideStoreDevtools({ maxAge: 50, logOnly: !isDevMode() }),
+    provideEffects([RegisterEffect, LoginEffect]),
     AuthService,
     PersistenceService,
   ],
