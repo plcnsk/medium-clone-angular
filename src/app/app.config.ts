@@ -3,12 +3,13 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideEffects } from '@ngrx/effects';
 
 import { routes } from './app.routes';
 import { authReducer } from './auth/store/reducers';
 import { AuthService } from './auth/services/auth.service';
-import { provideEffects } from '@ngrx/effects';
 import { RegisterEffect } from './auth/store/effects/register.effect';
+import { PersistenceService } from './shared/services/persistence.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideEffects([RegisterEffect]),
     provideStoreDevtools({ maxAge: 50, logOnly: !isDevMode() }),
     AuthService,
+    PersistenceService,
   ],
 };
