@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Observable } from 'rxjs';
 import {
   FormBuilder,
   FormGroup,
@@ -7,26 +8,35 @@ import {
   Validators,
 } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
+import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 
+import {
+  isSubmittingSelector,
+  validationErrorsSelector,
+} from '../../store/selectors';
 import { registerAction } from '../../store/actions/register.action';
-import { Observable } from 'rxjs';
-import { isSubmittingSelector } from '../../store/selectors';
-import { AppStateInterface } from '../../../shared/types/appState.interface';
-import { AsyncPipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
 import { RegisterRequestInterface } from '../../types/registerRequest.interface';
+import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
+import { BackendErrorsMessagesComponent } from '../../../shared/components/backendErrorsMessages/backendErrorsMessages.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: 'register.component.html',
   styleUrls: ['register.component.scss'],
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    NgIf,
+    BackendErrorsMessagesComponent,
+  ],
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, AsyncPipe],
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
   isSubmitting$!: Observable<boolean>;
+  backendErrors$!: Observable<BackendErrorsInterface | null>;
 
   constructor(
     private fb: FormBuilder,
@@ -49,6 +59,7 @@ export class RegisterComponent implements OnInit {
 
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+    this.backendErrors$ = this.store.pipe(select(validationErrorsSelector));
   }
 
   onSubmit(): void {
