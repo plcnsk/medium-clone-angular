@@ -14,16 +14,16 @@ import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors';
-import { registerAction } from '../../store/actions/register.action';
 import { AuthService } from '../../services/auth.service';
-import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
 import { BackendErrorsMessagesComponent } from '../../../shared/components/backendErrorsMessages/backendErrorsMessages.component';
+import { LoginRequestInterface } from '../../types/loginRequest.interface';
+import { loginAction } from '../../store/actions/login.action';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: 'register.component.html',
-  styleUrls: ['register.component.scss'],
+  selector: 'app-login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.scss'],
   imports: [
     RouterModule,
     ReactiveFormsModule,
@@ -33,7 +33,7 @@ import { BackendErrorsMessagesComponent } from '../../../shared/components/backe
   ],
   standalone: true,
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
   form!: FormGroup;
   isSubmitting$!: Observable<boolean>;
   backendErrors$!: Observable<BackendErrorsInterface | null>;
@@ -51,7 +51,6 @@ export class RegisterComponent implements OnInit {
 
   initializeForm(): void {
     this.form = this.fb.group({
-      username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
@@ -63,10 +62,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const request: RegisterRequestInterface = {
+    const request: LoginRequestInterface = {
       user: this.form.value,
     };
 
-    this.store.dispatch(registerAction({ request }));
+    this.store.dispatch(loginAction({ request }));
   }
 }
