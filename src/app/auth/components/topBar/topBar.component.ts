@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { LetDirective, PushPipe } from '@ngrx/component';
 
 import {
   currentUserSelector,
@@ -13,7 +14,7 @@ import {
   selector: 'app-top-bar',
   templateUrl: 'topBar.component.html',
   styleUrl: 'topBar.component.scss',
-  imports: [RouterLink, AsyncPipe],
+  imports: [RouterLink, AsyncPipe, PushPipe, LetDirective],
   standalone: true,
 })
 export class TopBarComponent {

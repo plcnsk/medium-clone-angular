@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light">
+<nav *ngrxLet="currentUser$; let currentUser" class="navbar navbar-light">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/']"> medium </a>
     <ul class="nav navbar-nav pull-xs-right">
@@ -6,7 +6,7 @@
         <a [routerLink]="['/']" class="nav-link"> Home </a>
       </li>
 
-      @if (isLoggedIn$ | async) {
+      @if (isLoggedIn$ | ngrxPush) {
         <li class="nav-item">
           <a [routerLink]="['/articles/new']" class="nav-link">
             <i class="ion-compose"></i>
@@ -21,18 +21,14 @@
         </li>
         <li class="nav-item">
           <a
-            [routerLink]="['/profiles', (currentUser$ | )?.username]"
+            [routerLink]="['/profiles', currentUser?.username]"
             class="nav-link"
           >
-            <img
-              class="user-pic"
-              [src]="(currentUser$ | async)?.image"
-              alt="user image"
-            />
-            &nbsp; {{ (currentUser$ | async)?.username }}
+            <img class="user-pic" [src]="currentUser?.image" alt="user image" />
+            &nbsp; {{ currentUser?.username }}
           </a>
         </li>
-      } @else if (isAnonymous$ | async) {
+      } @else if (isAnonymous$ | ngrxPush) {
         <li class="nav-item">
           <a [routerLink]="['/login']" class="nav-link"> Sign In </a>
         </li>
