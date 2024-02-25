@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+
 import { TopBarComponent } from './auth/components/topBar/topBar.component';
+import { getCurrentUserAction } from './auth/store/actions/get-current-user.action';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +11,10 @@ import { TopBarComponent } from './auth/components/topBar/topBar.component';
   imports: [RouterOutlet, TopBarComponent],
   standalone: true,
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(getCurrentUserAction());
+  }
+}

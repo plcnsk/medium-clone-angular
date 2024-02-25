@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 
 import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
@@ -30,5 +30,21 @@ export class AuthService {
     return this.http
       .post<AuthResponseInterface>(url, data)
       .pipe(map(this.getUser));
+  }
+
+  getCurrentUser(): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/user';
+
+    return this.http.get<AuthResponseInterface>(url).pipe(
+      catchError(error => {
+        console.log(error);
+
+        return EMPTY;
+      }),
+      map(response => {
+        console.log(response);
+        return this.getUser(response);
+      }),
+    );
   }
 }
