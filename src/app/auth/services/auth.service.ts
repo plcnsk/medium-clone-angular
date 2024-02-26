@@ -35,16 +35,8 @@ export class AuthService {
   getCurrentUser(): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/user';
 
-    return this.http.get<AuthResponseInterface>(url).pipe(
-      catchError(error => {
-        console.log(error);
-
-        return EMPTY;
-      }),
-      map(response => {
-        console.log(response);
-        return this.getUser(response);
-      }),
-    );
+    return this.http
+      .get<AuthResponseInterface>(url)
+      .pipe(map(response => this.getUser(response)));
   }
 }
