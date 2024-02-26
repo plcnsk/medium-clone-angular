@@ -12,18 +12,17 @@ import { RegisterEffect } from './auth/store/effects/register.effect';
 import { PersistenceService } from './shared/services/persistence.service';
 import { LoginEffect } from './auth/store/effects/login.effect';
 import { GetCurrentUserEffect } from './auth/store/effects/get-current-user.effect';
-import { AuthInterceptorFn } from './shared/services/auth-interceptor.service';
+import { authInterceptor } from './shared/services/auth-interceptor.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideStore(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideState({ name: 'auth', reducer: authReducer }),
     provideStoreDevtools({ maxAge: 50, logOnly: !isDevMode() }),
     provideEffects([RegisterEffect, LoginEffect, GetCurrentUserEffect]),
     AuthService,
     PersistenceService,
-    provideHttpClient(withInterceptors([AuthInterceptorFn])),
   ],
 };
