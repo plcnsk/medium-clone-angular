@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
-import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
+import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { PersistenceService } from '../../../shared/services/persistence.service';
 import {
   loginAction,

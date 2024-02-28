@@ -12,8 +12,8 @@ import {
 
 @Component({
   selector: 'app-top-bar',
-  templateUrl: 'topBar.component.html',
-  styleUrl: 'topBar.component.scss',
+  templateUrl: 'top-bar.component.html',
+  styleUrl: 'top-bar.component.scss',
   imports: [RouterLink, AsyncPipe, PushPipe, LetDirective],
   standalone: true,
 })

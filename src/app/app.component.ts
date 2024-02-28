@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { TopBarComponent } from './auth/components/topBar/topBar.component';
+import { TopBarComponent } from './auth/components/top-bar/top-bar.component';
 import { getCurrentUserAction } from './auth/store/actions/get-current-user.action';
 
 @Component({

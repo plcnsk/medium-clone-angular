@@ -15,9 +15,9 @@ import {
   validationErrorsSelector,
 } from '../../store/selectors';
 import { AuthService } from '../../services/auth.service';
-import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
-import { BackendErrorsMessagesComponent } from '../../../shared/components/backendErrorsMessages/backendErrorsMessages.component';
-import { LoginRequestInterface } from '../../types/loginRequest.interface';
+import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
+import { BackendErrorsMessagesComponent } from '../../../shared/components/backend-errors-messages/backend-errors-messages.component';
+import { LoginRequestInterface } from '../../types/login-request.interface';
 import { loginAction } from '../../store/actions/login.action';
 
 @Component({

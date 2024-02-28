@@ -16,9 +16,9 @@ import {
 } from '../../store/selectors';
 import { registerAction } from '../../store/actions/register.action';
 import { AuthService } from '../../services/auth.service';
-import { RegisterRequestInterface } from '../../types/registerRequest.interface';
-import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
-import { BackendErrorsMessagesComponent } from '../../../shared/components/backendErrorsMessages/backendErrorsMessages.component';
+import { RegisterRequestInterface } from '../../types/register-request.interface';
+import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
+import { BackendErrorsMessagesComponent } from '../../../shared/components/backend-errors-messages/backend-errors-messages.component';
 
 @Component({
   selector: 'app-register',
