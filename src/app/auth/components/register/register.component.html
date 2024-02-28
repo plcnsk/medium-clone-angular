@@ -7,10 +7,10 @@
           <a [routerLink]="['/login']">Have an account?</a>
         </p>
 
-        @if (backendErrors$ | async) {
-          <mc-backend-errors-messages
+        @if (backendErrors$ | ngrxPush) {
+          <app-backend-errors-messages
             [backendErrors]="backendErrors$ | async"
-          ></mc-backend-errors-messages>
+          ></app-backend-errors-messages>
         }
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -45,7 +45,7 @@
             <button
               class="btn btn-lg btn-primary pull-xs-right"
               type="submit"
-              [disabled]="isSubmitting$ | async"
+              [disabled]="isSubmitting$ | ngrxPush"
             >
               Sign Up
             </button>

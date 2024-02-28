@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { PushPipe } from '@ngrx/component';
 
 import {
   isSubmittingSelector,
@@ -23,13 +24,14 @@ import { BackendErrorsMessagesComponent } from '../../../shared/components/backe
 @Component({
   selector: 'app-register',
   templateUrl: 'register.component.html',
-  styleUrls: ['register.component.scss'],
+  styleUrl: 'register.component.scss',
   imports: [
     RouterModule,
     ReactiveFormsModule,
     AsyncPipe,
     NgIf,
     BackendErrorsMessagesComponent,
+    PushPipe,
   ],
   standalone: true,
 })

@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { PushPipe } from '@ngrx/component';
 
 import {
   isSubmittingSelector,
@@ -23,13 +24,14 @@ import { loginAction } from '../../store/actions/login.action';
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.scss'],
+  styleUrl: 'login.component.scss',
   imports: [
     RouterModule,
     ReactiveFormsModule,
     AsyncPipe,
     NgIf,
     BackendErrorsMessagesComponent,
+    PushPipe,
   ],
   standalone: true,
 })
