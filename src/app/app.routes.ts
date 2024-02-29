@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { RegisterComponent } from './auth/components/register/register.component';
-import { LoginComponent } from './auth/components/login/login.component';
-import { GlobalFeedComponent } from './global-feed/components/global-feed/global-feed.component';
+import { GlobalFeedComponent } from './pages/global-feed/global-feed.component';
+import { RegisterComponent } from './pages/auth/components/register/register.component';
+import { LoginComponent } from './pages/auth/components/login/login.component';
 
 export const routes: Routes = [
   {

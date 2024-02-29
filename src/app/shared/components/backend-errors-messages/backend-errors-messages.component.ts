@@ -9,7 +9,10 @@ import { BackendErrorsInterface } from '../../types/backend-errors.interface';
   standalone: true,
 })
 export class BackendErrorsMessagesComponent implements OnInit {
-  @Input('backendErrors') backendErrorsProps!: BackendErrorsInterface | null;
+  @Input('backendErrors') backendErrorsProps!:
+    | BackendErrorsInterface
+    | null
+    | undefined;
 
   errorsMessages!: string[];
 
