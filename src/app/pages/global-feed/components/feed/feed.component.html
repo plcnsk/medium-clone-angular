@@ -1,1 +1,39 @@
-<p>Feed</p>
+@if (isLoading$ | ngrxPush) {
+  Loading...
+}
+
+@if (error$ | ngrxPush) {
+  Some error...
+}
+
+@if (feed$ | ngrxPush) {
+  <div
+    class="article-preview"
+    *ngFor="let article of (feed$ | ngrxPush)?.articles"
+  >
+    <div class="article-meta">
+      <a [routerLink]="['/profile', article.author.username]">
+        <img [src]="article.author.image" alt="profile image" />
+      </a>
+
+      <div class="info">
+        <a [routerLink]="['/profile', article.author.username]">
+          {{ article.author.username }}
+        </a>
+
+        <span class="date">{{ article.createdAt }}</span>
+      </div>
+
+      <div class="pull-xs-right">add to favorites</div>
+    </div>
+
+    <a [routerLink]="['/articles', article.slug]" class="preview-link">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.description }}</p>
+
+      here is list of tags
+    </a>
+  </div>
+
+  pagination
+}

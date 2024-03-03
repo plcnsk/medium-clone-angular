@@ -3,7 +3,7 @@ import { ProfileInterface } from './profile.interface';
 export interface ArticleInterface {
   author: ProfileInterface;
   body: string;
-  createdAd: string;
+  createdAt: string;
   description: string;
   favorited: boolean;
   favoritesCount: number;
