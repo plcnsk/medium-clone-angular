@@ -12,13 +12,23 @@ import {
   feedSelector,
   isLoadingSelector,
 } from './store/selectors';
+import { ErrorMessageComponent } from '../../../../shared/components/error-message/error-message.component';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-feed',
   templateUrl: 'feed.component.html',
   styleUrl: 'feed.component.scss',
   standalone: true,
-  imports: [PushPipe, AsyncPipe, NgIf, NgForOf, RouterLink],
+  imports: [
+    PushPipe,
+    AsyncPipe,
+    NgIf,
+    NgForOf,
+    RouterLink,
+    ErrorMessageComponent,
+    LoadingComponent,
+  ],
 })
 export class FeedComponent implements OnInit {
   @Input('apiUrl') apiUrlProps!: string;

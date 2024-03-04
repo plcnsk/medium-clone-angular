@@ -1,9 +1,9 @@
 @if (isLoading$ | ngrxPush) {
-  Loading...
+  <app-loading></app-loading>
 }
 
 @if (error$ | ngrxPush) {
-  Some error...
+  <app-error-message></app-error-message>
 }
 
 @if (feed$ | ngrxPush) {
