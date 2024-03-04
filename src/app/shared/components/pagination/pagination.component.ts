@@ -29,6 +29,5 @@ export class PaginationComponent implements OnInit {
     }
 
     this.pages = this.utilsService.range(1, this.pagesCount);
-    console.log(this.pages);
   }
 }

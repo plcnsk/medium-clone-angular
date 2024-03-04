@@ -16,11 +16,13 @@ import { AuthService } from './pages/auth/services/auth.service';
 import { GetFeedEffect } from './pages/global-feed/components/feed/store/effects/ get-feed.effect';
 import { feedReducer } from './pages/global-feed/components/feed/store/reducers';
 import { FeedService } from './pages/global-feed/components/feed/services/feed.service';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideStore(),
+    provideStore({ router: routerReducer }),
+    provideRouterStore(),
     provideHttpClient(withInterceptors([authInterceptor])),
     provideState({ name: 'auth', reducer: authReducer }),
     provideState({ name: 'feed', reducer: feedReducer }),
