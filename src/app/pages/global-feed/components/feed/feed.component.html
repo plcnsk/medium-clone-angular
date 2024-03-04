@@ -35,5 +35,10 @@
     </a>
   </div>
 
-  pagination
+  <app-pagination
+    [total]="(feed$ | ngrxPush)?.articlesCount"
+    [limit]="limit"
+    [url]="baseUrl"
+    [currentPage]="currentPage"
+  ></app-pagination>
 }
