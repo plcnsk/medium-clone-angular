@@ -18,6 +18,7 @@ import { LoadingComponent } from '../../../../shared/components/loading/loading.
 import { environment } from '../../../../../environments/environment';
 import { ParamsInterface } from './types/params.interface';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
+import { TegListComponent } from '../../../../shared/components/tag-list/teg-list.component';
 
 @Component({
   selector: 'app-feed',
@@ -33,6 +34,7 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    TegListComponent,
   ],
 })
 export class FeedComponent implements OnInit, OnDestroy {
