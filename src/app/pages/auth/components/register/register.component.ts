@@ -19,7 +19,7 @@ import { registerAction } from '../../store/actions/register.action';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorsMessagesComponent } from '../../../../shared/components/backend-errors-messages/backend-errors-messages.component';
-import { BackendErrorsInterface } from '../../../../shared/types/backend-errors.interface';
+import { BackendErrorsInterface } from '../../../../shared/interfaces/backend-errors.interface';
 
 @Component({
   selector: 'app-register',

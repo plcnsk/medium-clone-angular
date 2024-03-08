@@ -19,7 +19,7 @@ import { AuthService } from '../../services/auth.service';
 import { LoginRequestInterface } from '../../types/login-request.interface';
 import { loginAction } from '../../store/actions/login.action';
 import { BackendErrorsMessagesComponent } from '../../../../shared/components/backend-errors-messages/backend-errors-messages.component';
-import { BackendErrorsInterface } from '../../../../shared/types/backend-errors.interface';
+import { BackendErrorsInterface } from '../../../../shared/interfaces/backend-errors.interface';
 
 @Component({
   selector: 'app-login',

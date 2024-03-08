@@ -1,0 +1,21 @@
+@if (isLoading$ | ngrxPush) {
+  <app-loading></app-loading>
+}
+
+@if (error$ | ngrxPush) {
+  <app-error-message></app-error-message>
+}
+
+@if (popularTags$ | ngrxPush) {
+  <div class="sidebar">
+    <p>Popular Tags</p>
+    <div class="tag-list">
+      <a
+        *ngFor="let popularTag of popularTags$ | ngrxPush"
+        [routerLink]="['/tags', popularTag]"
+        class="tag-default tag-pill"
+        >{{ popularTag }}</a
+      >
+    </div>
+  </div>
+}

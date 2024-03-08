@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { NgForOf } from '@angular/common';
 
+import { PopularTagType } from '../../interfaces/popular-tag.type';
+
 @Component({
   selector: 'app-tag-list',
   templateUrl: 'teg-list.component.html',
@@ -8,5 +10,5 @@ import { NgForOf } from '@angular/common';
   imports: [NgForOf],
 })
 export class TegListComponent {
-  @Input('tags') tagsProps: string[] = [];
+  @Input('tags') tagsProps: PopularTagType[] = [];
 }

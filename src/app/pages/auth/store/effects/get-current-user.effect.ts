@@ -9,7 +9,7 @@ import {
   getCurrentUserFailureAction,
   getCurrentUserSuccessAction,
 } from '../actions/get-current-user.action';
-import { CurrentUserInterface } from '../../../../shared/types/current-user.interface';
+import { CurrentUserInterface } from '../../../../shared/interfaces/current-user.interface';
 import { PersistenceService } from '../../../../shared/services/persistence.service';
 
 @Injectable()
