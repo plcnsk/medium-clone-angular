@@ -1,0 +1,44 @@
+@if (isLoading$ | ngrxPush) {
+  <app-loading></app-loading>
+}
+
+@if (error$ | ngrxPush) {
+  <app-error-message></app-error-message>
+}
+
+@if (feed$ | ngrxPush) {
+  <div
+    class="article-preview"
+    *ngFor="let article of (feed$ | ngrxPush)?.articles"
+  >
+    <div class="article-meta">
+      <a [routerLink]="['/profile', article.author.username]">
+        <img [src]="article.author.image" alt="profile image" />
+      </a>
+
+      <div class="info">
+        <a [routerLink]="['/profile', article.author.username]">
+          {{ article.author.username }}
+        </a>
+
+        <span class="date">{{ article.createdAt }}</span>
+      </div>
+
+      <div class="pull-xs-right">add to favorites</div>
+    </div>
+
+    <a [routerLink]="['/articles', article.slug]" class="preview-link">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.description }}</p>
+
+      <app-tag-list [tags]="article.tagList"></app-tag-list>
+    </a>
+  </div>
+
+  <app-pagination
+    [total]="(feed$ | ngrxPush)?.articlesCount"
+    [limit]="limit"
+    [url]="baseUrl"
+    [currentPage]="currentPage"
+  ></app-pagination>
+}

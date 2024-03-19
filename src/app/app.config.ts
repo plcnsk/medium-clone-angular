@@ -20,6 +20,7 @@ import { FeedService } from './pages/global-feed/components/feed/services/feed.s
 import { popularTagsReducer } from './shared/components/popular-tags/store/reducers';
 import { GetPopularTagsEffect } from './shared/components/popular-tags/store/effects/get-popular-tags.effect';
 import { PopularTagsService } from './shared/components/popular-tags/services/popular-tags.service';
+import { articleReducer } from './pages/article/store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideState({ name: 'auth', reducer: authReducer }),
     provideState({ name: 'feed', reducer: feedReducer }),
     provideState({ name: 'popularTags', reducer: popularTagsReducer }),
+    provideState({ name: 'article', reducer: articleReducer }),
     provideStoreDevtools({ maxAge: 50, logOnly: !isDevMode() }),
     provideEffects([
       RegisterEffect,
