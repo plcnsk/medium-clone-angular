@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { PushPipe } from '@ngrx/component';
@@ -37,7 +44,7 @@ import { TegListComponent } from '../../../../shared/components/tag-list/teg-lis
     TegListComponent,
   ],
 })
-export class FeedComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit, OnChanges, OnDestroy {
   @Input('apiUrl') apiUrlProps!: string;
 
   limit = environment.limit;
@@ -58,6 +65,17 @@ export class FeedComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeValues();
     this.initializeListeners();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const isApiUrlChanged =
+      !changes?.['apiUrlProps'].firstChange &&
+      changes?.['apiUrlProps'].currentValue !==
+        changes?.['apiUrlProps'].previousValue;
+
+    if (isApiUrlChanged) {
+      this.fetchFeed();
+    }
   }
 
   ngOnDestroy(): void {
